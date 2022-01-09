@@ -349,7 +349,7 @@ function getLocal() {
             })
 
 
-            // append to Lib
+            // append to Library
             palette.appendChild(title);
             palette.appendChild(preview);
             palette.appendChild(paletteBtn);
