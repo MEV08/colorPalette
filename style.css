@@ -1,0 +1,263 @@
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+}
+button {
+    font-family: 'Roboto', sans-serif;
+}
+path, i, svg {
+    pointer-events: none;
+}
+.colors {
+    min-height: 80vh;
+    display: flex;
+    color: rgb(212, 212, 212);
+}
+.colors-list {
+    width: 100%;
+    display: flex;
+    list-style: none;
+}
+.colors-list__item {
+    height: 80vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    overflow: hidden;
+}
+.colors-list__item-title {
+    font-size: 2rem;
+    cursor: pointer;
+}
+.colors-list__item-sliders {
+    padding: 15px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    pointer-events: none;
+    transform: translateY(100px);
+    transition: all .3s ease-in-out;
+    opacity: 0;
+}
+.colors-list__item-sliders.active {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: all;
+}
+.close-adjustment,
+.close-save,
+.close-library {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-right-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: rgb(73, 73, 73);
+    color: #fff;
+    font-weight: 700;
+}
+.colors-list__item-controls {
+    display: flex;
+    flex-direction: column;
+}
+.adjust,
+.lock {
+    margin: 20px 0;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+.library-panel, 
+.generate-panel, 
+.save-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.panel p {
+    font-size: 1.2rem;
+}
+.library,
+.save, 
+.generate {
+    margin: 15px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background: rgb(31, 33, 63);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.submit-save {
+    font-size: 16px;
+    margin: 15px;
+    padding: 10px 25px;
+    cursor: pointer;
+    background: rgb(60, 60, 92);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+/* input */
+input[type="range"] {
+    margin: 1rem 0;
+    width: 100%;
+    -webkit-appearance: none;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+input[type=range]:focus {
+    outline: none; 
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 8px;
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+    margin-top: -10px; 
+    margin-bottom: -5px;
+    box-shadow: 1px 1px 2px #000000, 0px 0px 2px #0d0d0d; 
+}
+input[type=range]::-moz-range-thumb {
+    margin-top: -10px; 
+    margin-bottom: -5px;
+    box-shadow: 1px 1px 2px #000000, 0px 0px 2px #0d0d0d; 
+    border: 1px solid #000000;
+    height: 30px;
+    width: 8px;
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+}
+input[type=range]::-ms-thumb {
+    margin-top: -10px; 
+    margin-bottom: -5px;
+    box-shadow: 1px 1px 2px #000000, 0px 0px 2px #0d0d0d; 
+    border: 1px solid #000000;
+    height: 30px;
+    width: 8px;
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+}
+.copy-container,
+.save-container,
+.library-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+.copy-container.active,
+.save-container.active,
+.library-container.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.copy-popup,
+.save-popup,
+.library-popup {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+    transform: translateY(-2rem);
+    min-width: 30%;
+    min-height: 30vh;
+}
+.copy-popup.active,
+.save-popup.active,
+.library-popup.active {
+    transform: translateY(0rem);
+}
+.copy-popup h4,.save-popup h4,.library-popup h4 {
+    padding: 20px;
+    font-size: 2rem;
+}
+.save-name {
+    padding: 15px;
+    font-size: 1.5rem;
+}
+.library-popup {
+    padding: 1rem;
+    min-width: 40%;
+    max-height: 50vh;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+.custom-palette {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.small-preview {
+    display: flex;
+    flex: 1;
+}
+.custom-palette h4 {
+    flex: 1;
+}
+.small-preview div {
+    height: 5rem;
+    flex: 1;
+}
+.pick-palette-btn {
+    margin-left: 10px;
+    padding: 0.8rem;
+    height: 5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color:  rgb(68, 68, 68);
+    color: #fff;
+    border-radius: 3px;
+}
